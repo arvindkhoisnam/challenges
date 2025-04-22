@@ -90,6 +90,7 @@ var RootCmd = &cobra.Command{
 							Content: Prompt,
 						},
 					},
+					MaxTokens: 100,
 				},
 			)
 
