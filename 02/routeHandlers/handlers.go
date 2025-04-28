@@ -40,7 +40,7 @@ func Models(ctx *gin.Context){
 	models,err := client.ListModels(context.Background())
 	if err != nil {
 		fmt.Println(err)
-		ctx.JSON(500,gin.H{"message":"Could not get OpenAI models."})
+		ctx.JSON(400,gin.H{"message":"Could not get OpenAI models."})
 	}
 
 	for _,model := range models.Models{
@@ -110,7 +110,7 @@ func Chat(ctx *gin.Context) {
 
 	if err != nil {
 		fmt.Printf("Completion error: %v\n", err)
-		ctx.JSON(500, gin.H{"error": "Failed to get response from OpenAI"})
+		ctx.JSON(400, gin.H{"error": "Failed to get response from OpenAI"})
 		return
 	}
 
