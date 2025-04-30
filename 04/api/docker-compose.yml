@@ -1,0 +1,26 @@
+version: "3.1"
+services:
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: mydatabase
+      DB_PORT: 5432
+      DB_HOST: db
+      DB_SSLMODE: disable
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "db"
