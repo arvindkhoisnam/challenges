@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/arvindkhoisnam/challenges/02/routeHandlers"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,15 +20,20 @@ import (
 func routes(app *gin.Engine){
 	api := app.Group("/api/v1")
 	api.Use(LoggerMiddleware())
-	{	
-		api.GET("/health",routeHandlers.HealthCheck)
-		api.GET("/models",routeHandlers.Models)
-		api.POST("/completion",routeHandlers.Completion)
-		api.POST("/chat",routeHandlers.Chat)
-	}
+	api.GET("/health",routeHandlers.HealthCheck)
+	api.GET("/models",routeHandlers.Models)
+	api.POST("/completion",routeHandlers.Completion)
+	api.POST("/chat",routeHandlers.Chat)
 }
 func main(){
 	app := gin.Default()
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:5173"},
+		AllowMethods:     []string{"GET", "POST", "OPTIONS", "PUT", "DELETE"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
+		AllowCredentials: true,
+	}))
 	routes(app)
 
 	server := &http.Server{

@@ -84,13 +84,12 @@ func Completion(ctx *gin.Context){
 var conversationHistory = []openai.ChatCompletionMessage{}
 
 func Chat(ctx *gin.Context) {
-	fmt.Println(conversationHistory)
 	godotenv.Load()
 	apiKey := os.Getenv("API_KEY")
 
 	client := openai.NewClient(apiKey)
 	reqBody := &Prompt{}
-
+	fmt.Println(reqBody)
 	if err := ctx.ShouldBindJSON(reqBody); err != nil {
 		ctx.JSON(400, gin.H{"error": "Invalid request", "details": err.Error()})
 		return
@@ -118,5 +117,5 @@ func Chat(ctx *gin.Context) {
 
 	conversationHistory = append(conversationHistory, assistantMsg)
 
-	ctx.JSON(200, gin.H{"data": assistantMsg.Content})
+	ctx.JSON(200, gin.H{"data": conversationHistory})
 }

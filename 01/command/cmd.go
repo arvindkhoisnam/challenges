@@ -33,7 +33,7 @@ var RootCmd = &cobra.Command{
 		fmt.Println("✅  Currently supported models",supportedModels)
 		fmt.Println("⚠️  Desired OpenAI temperature is a required flag. -t 0.7")
 		fmt.Println("⚠️  Your prompt is a required flag. -p Please explain Quantum computing")
-		fmt.Println("⚠️  Final command should look like gen -t 0.7 -m OLama3 Please explain Quantum computing")
+		fmt.Println("⚠️  Final command should look like gen -t 0.7 -m gpt-4 Please explain Quantum computing")
 		fmt.Println()
 		fmt.Println("⛔️ Type 'exit' to quit.")
 		fmt.Println()
