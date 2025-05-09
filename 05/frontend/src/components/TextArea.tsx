@@ -22,7 +22,7 @@ function TextArea({
   return (
     <form
       onSubmit={e => {
-        e.preventDefault(); // 👈 Critical fix
+        e.preventDefault();
         if (prompt.length < 1) {
           return;
         }

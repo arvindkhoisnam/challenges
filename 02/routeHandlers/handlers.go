@@ -68,7 +68,7 @@ func Completion(ctx *gin.Context){
 		openai.CompletionRequest{
 			Model:     openai.GPT3Dot5TurboInstruct, 
 			Prompt:    reqBody.Prompt,
-			MaxTokens: 100,
+			MaxTokens: 1000,
 			Temperature: reqBody.Temperature,
 		},
 	)

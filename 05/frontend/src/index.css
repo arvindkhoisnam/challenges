@@ -18,7 +18,7 @@
   border-radius: 50%;
   border: 2px solid var(--color-primary-bg);
   border-right-color: var(--color-primary-text);
-  animation: rotate 1s infinite linear;
+  animation: rotate 0.8s infinite linear;
 }
 @keyframes rotate {
   to {
